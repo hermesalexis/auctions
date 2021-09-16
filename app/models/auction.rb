@@ -13,5 +13,6 @@
 #
 class Auction < ApplicationRecord
   belongs_to :user, optional: true
+  has_many :bids
   validates :start_date, :end_date, :title, :description, presence: true
 end

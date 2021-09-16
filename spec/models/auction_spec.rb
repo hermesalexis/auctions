@@ -17,7 +17,8 @@ RSpec.describe Auction, type: :model do
   subject { described_class.new(title: 'Anything',
                                 description: 'Anything',
                                 start_date: DateTime.now,
-                                end_date: DateTime.now + 1.week
+                                end_date: DateTime.now + 1.week,
+                                user_id: 1
             )
 
   }
@@ -48,5 +49,6 @@ RSpec.describe Auction, type: :model do
 
   describe "Asociations" do
     it { should belong_to(:user).without_validating_presence }
+    it { should have_many(:bids) }
   end
 end
