@@ -9,7 +9,9 @@
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :integer
 #
 class Auction < ApplicationRecord
+  belongs_to :user, optional: true
   validates :start_date, :end_date, :title, :description, presence: true
 end

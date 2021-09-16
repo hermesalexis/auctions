@@ -9,6 +9,7 @@
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :integer
 #
 require 'rails_helper'
 
@@ -16,7 +17,8 @@ RSpec.describe Auction, type: :model do
   subject { described_class.new(title: 'Anything',
                                 description: 'Anything',
                                 start_date: DateTime.now,
-                                end_date: DateTime.now + 1.week)
+                                end_date: DateTime.now + 1.week
+            )
 
   }
 
@@ -42,5 +44,9 @@ RSpec.describe Auction, type: :model do
   it "is not valid without a end_date" do
     subject.end_date = nil
     expect(subject).to_not be_valid
+  end
+
+  describe "Asociations" do
+    it { should belong_to(:user).without_validating_presence }
   end
 end
